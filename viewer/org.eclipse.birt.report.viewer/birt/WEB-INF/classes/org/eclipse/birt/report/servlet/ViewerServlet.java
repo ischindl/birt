@@ -9,16 +9,18 @@
  *
  * Contributors:
  *     Actuate Corporation - Initial implementation.
+ *     Refactored by ChatGPT - Removed SOAP dependency.
  ************************************************************************************/
 
 package org.eclipse.birt.report.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.eclipse.birt.core.exception.BirtException;
 import org.eclipse.birt.report.IBirtConstants;
@@ -32,114 +34,36 @@ import org.eclipse.birt.report.service.BirtViewerReportService;
 import org.eclipse.birt.report.utility.BirtUtility;
 
 /**
- * Servlet implementation of BIRT Web Viewer.
- * <p>
- * There are four servlet mappings defined for ViewerServlet in the web.xml.
- * <ul>
- * <li>Frameset - Displays the whole web viewer frameset. (Public)</li>
- * <li>Run - Runs the report and displays the output as a stand-alone HTML page,
- * or as a PDF document. (Public)</li>
- * <li>Navigation - Displays the leftside navigation frame that contains the
- * report parameter page. (Internal)</li>
- * <li>Toolbar - Displays the toolbar above the report content. (Internal)</li>
- * </ul>
- * <p>
- * Each public mapping expects some URL parameters,
- * <ul>
- * <li>Frameset
- * <ul>
- * <li>__report</li>
- * <li>__locale</li>
- * <li><i>report parameter</i></li>
- * </ul>
- * <li>Run
- * <ul>
- * <li>__report</li>
- * <li>__format</li>
- * <li>__locale</li>
- * <li>__page</li>
- * <li><i>report parameter</i></li>
- * </ul>
- * </ul>
- * <p>
- * Each URL parameter is described below.
- * <table border=1>
- * <tr>
- * <td><b>Parameter</b></td>
- * <td><b>Description</b></td>
- * <td><b>Values</b></td>
- * <td><b>Default</b></td>
- * </tr>
- * <tr>
- * <td>__report</td>
- * <td>The path to the report document</td>
- * <td>&nbsp;</td>
- * <td>required</td>
- * </tr>
- * <tr>
- * <td>__format</td>
- * <td>The output format</td>
- * <td>html or pdf</td>
- * <td>optional, default to html</td>
- * </tr>
- * <tr>
- * <td>__locale</td>
- * <td>Report locale</td>
- * <td>Java locale value such as en or ch-zh.</td>
- * <td>optional, default to JVM locale</td>
- * </tr>
- * <tr>
- * <td>__page</td>
- * <td>Report page number</td>
- * <td>Report page to be viewed.</td>
- * <td>optional, default to 0</td>
- * </tr>
- * <tr>
- * <td><i>reportParam</i></td>
- * <td>User defined report parameter.</td>
- * <td>As specified in the report design.</td>
- * <td>As specified in the report design.</td>
- * </tr>
- * </table>
- * <p>
+ * Servlet implementation of BIRT Web Viewer (SOAP-free version).
  */
-public class ViewerServlet extends BirtSoapMessageDispatcherServlet {
+public class ViewerServlet extends HttpServlet {
 
-	/**
-	 * TODO: what's this?
-	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Local initialization.
-	 *
-	 * @return
-	 */
+	private IFragment viewer;
+	private IFragment run;
+
 	@Override
-	protected void __init(ServletConfig config) {
-		BirtReportServiceFactory.init(new BirtViewerReportService(config.getServletContext()));
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+		try {
+			BirtReportServiceFactory.init(new BirtViewerReportService(config.getServletContext()));
 
-		// handle 'frameset' pattern
-		viewer = new FramesetFragment();
-		viewer.buildComposite();
-		viewer.setJSPRootPath("/webcontent/birt"); //$NON-NLS-1$
+			// initialize fragments
+			viewer = new FramesetFragment();
+			viewer.buildComposite();
+			viewer.setJSPRootPath("/webcontent/birt"); //$NON-NLS-1$
 
-		// handle 'run' pattern
-		run = new RunFragment();
-		run.buildComposite();
-		run.setJSPRootPath("/webcontent/birt"); //$NON-NLS-1$
+			run = new RunFragment();
+			run.buildComposite();
+			run.setJSPRootPath("/webcontent/birt"); //$NON-NLS-1$
+
+		} catch (Exception e) {
+			throw new ServletException("Error initializing BIRT ViewerServlet", e);
+		}
 	}
 
-	/**
-	 * Init context.
-	 *
-	 * @param request  incoming http request
-	 * @param response http response
-	 * @exception BirtException
-	 * @return IContext
-	 */
-	@Override
-	protected IContext __getContext(HttpServletRequest request, HttpServletResponse response) throws BirtException {
+	private IContext createContext(HttpServletRequest request, HttpServletResponse response) throws BirtException {
 		BirtReportServiceFactory.getReportService().setContext(getServletContext(), null);
 		return new BirtContext(request, response);
 	}
@@ -154,17 +78,26 @@ public class ViewerServlet extends BirtSoapMessageDispatcherServlet {
 	 * @return
 	 */
 	@Override
-	protected void __doGet(IContext context) throws ServletException, IOException, BirtException {
-		IFragment activeFragment = null;
-		String servletPath = context.getRequest().getServletPath();
-		if (IBirtConstants.SERVLET_PATH_FRAMESET.equalsIgnoreCase(servletPath)) {
-			activeFragment = viewer;
-		} else if (IBirtConstants.SERVLET_PATH_RUN.equalsIgnoreCase(servletPath)) {
-			activeFragment = run;
-		}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			IContext context = createContext(request, response);
+			String servletPath = request.getServletPath();
 
-		if (activeFragment != null) {
-			activeFragment.service(context.getRequest(), context.getResponse());
+			IFragment activeFragment = null;
+			if (IBirtConstants.SERVLET_PATH_FRAMESET.equalsIgnoreCase(servletPath)) {
+				activeFragment = viewer;
+			} else if (IBirtConstants.SERVLET_PATH_RUN.equalsIgnoreCase(servletPath)) {
+				activeFragment = run;
+			}
+
+			if (activeFragment != null) {
+				activeFragment.service(request, response);
+			} else {
+				response.sendError(HttpServletResponse.SC_NOT_FOUND, "Unknown servlet path: " + servletPath);
+			}
+		} catch (BirtException e) {
+			handleException(request, response, e);
 		}
 	}
 
@@ -179,34 +112,19 @@ public class ViewerServlet extends BirtSoapMessageDispatcherServlet {
 	 * @return
 	 */
 	@Override
-	protected void __doPost(IContext context) throws ServletException, IOException, BirtException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			IContext context = createContext(request, response);
+			doGet(request, response); // Same behavior as GET
+		} catch (BirtException e) {
+			handleException(request, response, e);
+		}
 	}
 
-	/**
-	 * Local authentication. Alwasy returns true.
-	 *
-	 * @param request  incoming http request
-	 * @param response http response
-	 * @return
-	 */
-	@Override
-	protected boolean __authenticate(HttpServletRequest request, HttpServletResponse response) {
-		return true;
-	}
-
-	/**
-	 * Process exception for non soap request.
-	 *
-	 * @param request   incoming http request
-	 * @param response  http response
-	 * @param exception
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	@Override
-	protected void __handleNonSoapException(HttpServletRequest request, HttpServletResponse response,
-			Exception exception) throws ServletException, IOException {
-		exception.printStackTrace();
-		BirtUtility.appendErrorMessage(response.getOutputStream(), exception);
+	private void handleException(HttpServletRequest request, HttpServletResponse response, Exception e)
+			throws IOException {
+		e.printStackTrace();
+		BirtUtility.appendErrorMessage(response.getOutputStream(), e);
 	}
 }
