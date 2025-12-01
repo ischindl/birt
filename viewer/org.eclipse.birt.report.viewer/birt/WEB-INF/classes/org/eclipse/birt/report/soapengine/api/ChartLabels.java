@@ -4,11 +4,20 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ChartLabels")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ChartLabels implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "Title")
 	private String title;
+	@XmlElement(name = "XAxis")
 	private String XAxis;
+	@XmlElement(name = "YAxis")
 	private String[] YAxis;
 
 	public ChartLabels() {

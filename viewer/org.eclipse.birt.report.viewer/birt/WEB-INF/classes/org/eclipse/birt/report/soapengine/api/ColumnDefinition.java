@@ -3,22 +3,42 @@ package org.eclipse.birt.report.soapengine.api;
 import java.io.Serializable;
 import java.util.Arrays;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ColumnDefinition")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ColumnDefinition implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "Index")
 	private Integer index;
+	@XmlElement(name = "Iid")
 	private String iid;
+	@XmlElement(name = "Header")
 	private String header;
+	@XmlElement(name = "DataType")
 	private Integer dataType;
+	@XmlElement(name = "Expr")
 	private String expr;
+	@XmlElement(name = "NewIndex")
 	private Integer newIndex;
+	@XmlElement(name = "IsGrouped")
 	private Boolean isGrouped;
+	@XmlElement(name = "SortDir")
 	private SortingDirection sortDir;
+	@XmlElement(name = "Aggregate")
 	private AggregateDefinition[] aggregate;
+	@XmlElement(name = "Font")
 	private Font font;
+	@XmlElement(name = "Format")
 	private Format format;
+	@XmlElement(name = "Properties")
 	private ColumnProperties properties;
+	@XmlElement(name = "FormatRuleSet")
 	private FormatRuleSet formatRuleSet;
+	@XmlElement(name = "BoundDataColumn")
 	private BoundDataColumn boundDataColumn;
 
 	public ColumnDefinition() {

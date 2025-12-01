@@ -19,18 +19,30 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 /**
  * information of an ERNI group
  */
+@XmlRootElement(name = "G_Info")
+@XmlAccessorType(XmlAccessType.NONE)
 public class G_Info implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "level")
 	private int level;
+	@XmlElement(name = "groupName")
 	private java.lang.String groupName;
 	/** The number of rows in group header */
+	@XmlElement(name = "h_Count")
 	private int h_Count;
 	/** The number of rows in group footer */
+	@XmlElement(name = "f_Count")
 	private int f_Count;
 	/** The index of group header row */
+	@XmlElement(name = "HR_Index")
 	private int HR_Index;
 
 	public G_Info() {

@@ -21,9 +21,18 @@ package org.eclipse.birt.report.soapengine.api;
 
 import org.eclipse.birt.report.IBirtConstants;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "SelectItemChoice")
+@XmlAccessorType(XmlAccessType.NONE)
 public class SelectItemChoice implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "value")
 	private java.lang.String value;
+	@XmlElement(name = "label")
 	private java.lang.String label;
 
 	public static final SelectItemChoice NULL_VALUE = new SelectItemChoice(IBirtConstants.NULL_VALUE,

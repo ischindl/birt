@@ -19,15 +19,26 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "TableColContextMenuState")
+@XmlAccessorType(XmlAccessType.NONE)
 public class TableColContextMenuState implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	/** Can set NoRepeatValue in a table column */
+	@XmlElement(name = "canNoRepeatValue")
 	private boolean canNoRepeatValue;
 	/** Can unset NoRepeatValue in a table column */
+	@XmlElement(name = "canRepeatValue")
 	private boolean canRepeatValue;
 	/** Can expand a group column */
+	@XmlElement(name = "canExpand")
 	private boolean canExpand;
 	/** Can collapse a group column */
+	@XmlElement(name = "canCollapse")
 	private boolean canCollapse;
 
 	public TableColContextMenuState() {

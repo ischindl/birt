@@ -2,9 +2,19 @@ package org.eclipse.birt.report.soapengine.api;
 
 import java.util.Objects;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "BoundDataColumn")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BoundDataColumn {
+	@XmlElement(name = "Name")
 	private String name;
+	@XmlElement(name = "Expression")
 	private String expression;
+	@XmlElement(name = "Type")
 	private String type;
 
 	public BoundDataColumn() {

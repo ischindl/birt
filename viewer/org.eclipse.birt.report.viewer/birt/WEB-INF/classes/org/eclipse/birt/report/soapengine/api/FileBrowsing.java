@@ -19,13 +19,26 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "FileBrowsing")
+@XmlAccessorType(XmlAccessType.NONE)
 public class FileBrowsing implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "path")
 	private java.lang.String path;
+	@XmlElement(name = "fileName")
 	private java.lang.String fileName;
+	@XmlElement(name = "search")
 	private org.eclipse.birt.report.soapengine.api.FileSearch search;
+	@XmlElement(name = "pathSeparator")
 	private java.lang.String pathSeparator;
+	@XmlElement(name = "currentWorkingFolder")
 	private org.eclipse.birt.report.soapengine.api.RepositoryPathSegmentList currentWorkingFolder;
+	@XmlElement(name = "fileList")
 	private org.eclipse.birt.report.soapengine.api.FileList fileList;
 
 	public FileBrowsing() {

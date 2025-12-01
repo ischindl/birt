@@ -19,10 +19,20 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "DataFieldFolder")
+@XmlAccessorType(XmlAccessType.NONE)
 public class DataFieldFolder implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "Name")
 	private java.lang.String name;
+	@XmlElement(name = "Folder")
 	private org.eclipse.birt.report.soapengine.api.DataFieldFolder[] folder;
+	@XmlElement(name = "Field")
 	private org.eclipse.birt.report.soapengine.api.DataField[] field;
 
 	public DataFieldFolder() {

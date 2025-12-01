@@ -19,11 +19,22 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "Page")
+@XmlAccessorType(XmlAccessType.NONE)
 public class Page implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "PageNumber")
 	private java.lang.String pageNumber;
+	@XmlElement(name = "TotalPage")
 	private java.lang.String totalPage;
+	@XmlElement(name = "Completed")
 	private java.lang.Boolean completed;
+	@XmlElement(name = "rtl")
 	private java.lang.Boolean rtl;
 
 	public Page() {

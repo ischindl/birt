@@ -19,11 +19,19 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 /**
  * list of S_Info
  */
+@XmlRootElement(name = "TableSections")
+@XmlAccessorType(XmlAccessType.NONE)
 public class TableSections implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "section")
 	private org.eclipse.birt.report.soapengine.api.S_Info[] section;
 
 	public TableSections() {

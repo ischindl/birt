@@ -1,7 +1,16 @@
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "Binding")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Binding {
+	@XmlElement(name = "RptElementId")
 	private long rptElementId;
+	@XmlElement(name = "DataSetId")
 	private long dataSetId;
 
 	public Binding() {

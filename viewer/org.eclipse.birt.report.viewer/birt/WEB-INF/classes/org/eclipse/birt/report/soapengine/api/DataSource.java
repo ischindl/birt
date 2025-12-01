@@ -19,11 +19,22 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "DataSource")
+@XmlAccessorType(XmlAccessType.NONE)
 public class DataSource implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "Type")
 	private java.lang.String type;
+	@XmlElement(name = "DisplayName")
 	private java.lang.String displayName;
+	@XmlElement(name = "Description")
 	private java.lang.String description;
+	@XmlElement(name = "IsNative")
 	private java.lang.Boolean isNative;
 
 	public DataSource() {

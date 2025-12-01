@@ -19,8 +19,16 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "NumberCategoryChoiceList")
+@XmlAccessorType(XmlAccessType.NONE)
 public class NumberCategoryChoiceList implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "NumberCategoryChoice")
 	private org.eclipse.birt.report.soapengine.api.NumberCategoryChoice[] numberCategoryChoice;
 
 	public NumberCategoryChoiceList() {

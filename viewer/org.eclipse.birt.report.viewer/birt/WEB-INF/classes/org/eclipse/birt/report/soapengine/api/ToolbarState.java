@@ -19,15 +19,27 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ToolbarState")
+@XmlAccessorType(XmlAccessType.NONE)
 public class ToolbarState implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	/** can create a new report */
+	@XmlElement(name = "canNew")
 	private boolean canNew;
+	@XmlElement(name = "canUndo")
 	private boolean canUndo;
+	@XmlElement(name = "canRedo")
 	private boolean canRedo;
 	/** where to save the design is known */
+	@XmlElement(name = "canSave")
 	private boolean canSave;
 	/** the design is dirty */
+	@XmlElement(name = "isDirty")
 	private boolean isDirty;
 
 	public ToolbarState() {

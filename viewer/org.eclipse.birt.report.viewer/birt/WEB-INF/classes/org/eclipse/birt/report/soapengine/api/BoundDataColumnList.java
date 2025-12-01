@@ -5,9 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "BoundDataColumnList")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BoundDataColumnList implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "BoundDataColumn")
 	private List<BoundDataColumn> boundDataColumns = new ArrayList<>();
 
 	public BoundDataColumnList() {

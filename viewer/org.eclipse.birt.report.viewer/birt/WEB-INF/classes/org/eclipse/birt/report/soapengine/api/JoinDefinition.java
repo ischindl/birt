@@ -19,10 +19,20 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "JoinDefinition")
+@XmlAccessorType(XmlAccessType.NONE)
 public class JoinDefinition implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "leftIO")
 	private org.eclipse.birt.report.soapengine.api.IOReference leftIO;
+	@XmlElement(name = "rightIO")
 	private org.eclipse.birt.report.soapengine.api.IOReference rightIO;
+	@XmlElement(name = "joinConditions")
 	private org.eclipse.birt.report.soapengine.api.JoinCondition[] joinConditions;
 
 	public JoinDefinition() {
@@ -155,4 +165,4 @@ public class JoinDefinition implements java.io.Serializable {
 		return _hashCode;
 	}
 
-	}
+}

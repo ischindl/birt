@@ -19,10 +19,20 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "Export")
+@XmlAccessorType(XmlAccessType.NONE)
 public class Export implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "AvailableColumns")
 	private org.eclipse.birt.report.soapengine.api.Vector availableColumns;
+	@XmlElement(name = "SelectedColumn")
 	private org.eclipse.birt.report.soapengine.api.Vector selectedColumn;
+	@XmlElement(name = "Criteria")
 	private org.eclipse.birt.report.soapengine.api.ExportCriteria[] criteria;
 
 	public Export() {

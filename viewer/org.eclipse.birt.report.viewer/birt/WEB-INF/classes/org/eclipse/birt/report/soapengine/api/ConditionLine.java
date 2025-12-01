@@ -2,17 +2,32 @@ package org.eclipse.birt.report.soapengine.api;
 
 import java.io.Serializable;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ConditionLine")
+@XmlAccessorType(XmlAccessType.NONE)
 public class ConditionLine implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "reportParameterList")
 	private ReportParameterList reportParameterList;
+	@XmlElement(name = "logicOp")
 	private String logicOp;
+	@XmlElement(name = "hasLeftBracket")
 	private boolean hasLeftBracket;
+	@XmlElement(name = "hasNot")
 	private boolean hasNot;
+	@XmlElement(name = "row")
 	private String row;
+	@XmlElement(name = "operator")
 	private String operator;
+	@XmlElement(name = "value1")
 	private String value1;
+	@XmlElement(name = "value2")
 	private String value2;
+	@XmlElement(name = "hasRightBracket")
 	private boolean hasRightBracket;
 
 	public ConditionLine() {

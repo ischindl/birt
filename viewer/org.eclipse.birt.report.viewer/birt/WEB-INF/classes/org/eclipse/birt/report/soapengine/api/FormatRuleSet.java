@@ -19,8 +19,16 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "FormatRuleSet")
+@XmlAccessorType(XmlAccessType.NONE)
 public class FormatRuleSet implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "FormatRule")
 	private org.eclipse.birt.report.soapengine.api.FormatRule[] formatRule;
 
 	public FormatRuleSet() {

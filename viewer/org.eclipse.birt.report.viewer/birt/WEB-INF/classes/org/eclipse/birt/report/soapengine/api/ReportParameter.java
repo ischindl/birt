@@ -19,10 +19,20 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ReportParameter")
+@XmlAccessorType(XmlAccessType.NONE)
 public class ReportParameter implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "name")
 	private java.lang.String name;
+	@XmlElement(name = "promptString")
 	private java.lang.String promptString;
+	@XmlElement(name = "defaultValue")
 	private java.lang.String defaultValue;
 
 	public ReportParameter() {

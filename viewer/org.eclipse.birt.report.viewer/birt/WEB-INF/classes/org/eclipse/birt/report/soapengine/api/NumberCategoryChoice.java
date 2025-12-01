@@ -19,13 +19,26 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "NumberCategoryChoice")
+@XmlAccessorType(XmlAccessType.NONE)
 public class NumberCategoryChoice implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "categoryChoice")
 	private org.eclipse.birt.report.soapengine.api.CategoryChoice categoryChoice;
+	@XmlElement(name = "decimalPlaces")
 	private org.eclipse.birt.report.soapengine.api.Vector decimalPlaces;
+	@XmlElement(name = "symbol")
 	private org.eclipse.birt.report.soapengine.api.Vector symbol;
+	@XmlElement(name = "symbolPosition")
 	private org.eclipse.birt.report.soapengine.api.Vector symbolPosition;
+	@XmlElement(name = "negativeNumberFormat")
 	private org.eclipse.birt.report.soapengine.api.Vector negativeNumberFormat;
+	@XmlElement(name = "useSeparator")
 	private java.lang.Boolean useSeparator;
 
 	public NumberCategoryChoice() {

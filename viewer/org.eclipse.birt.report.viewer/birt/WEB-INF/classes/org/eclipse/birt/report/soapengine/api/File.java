@@ -19,13 +19,26 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "File")
+@XmlAccessorType(XmlAccessType.NONE)
 public class File implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "index")
 	private int index;
+	@XmlElement(name = "isFile")
 	private boolean isFile;
+	@XmlElement(name = "name")
 	private java.lang.String name;
+	@XmlElement(name = "fileType")
 	private java.lang.String fileType;
+	@XmlElement(name = "displayName")
 	private java.lang.String displayName;
+	@XmlElement(name = "description")
 	private java.lang.String description;
 
 	public File() {

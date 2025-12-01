@@ -19,14 +19,28 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "GroupDetail")
+@XmlAccessorType(XmlAccessType.NONE)
 public class GroupDetail implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "columnIdx")
 	private int columnIdx;
+	@XmlElement(name = "groupOn")
 	private java.lang.String groupOn;
+	@XmlElement(name = "createSection")
 	private boolean createSection;
+	@XmlElement(name = "dataType")
 	private int dataType;
+	@XmlElement(name = "intervalType")
 	private java.lang.Integer intervalType;
+	@XmlElement(name = "intervalRange")
 	private java.lang.Double intervalRange;
+	@XmlElement(name = "intervalBase")
 	private java.lang.String intervalBase;
 
 	public GroupDetail() {

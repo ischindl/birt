@@ -19,10 +19,20 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "JoinCondition")
+@XmlAccessorType(XmlAccessType.NONE)
 public class JoinCondition implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "leftExpr")
 	private java.lang.String leftExpr;
+	@XmlElement(name = "operator")
 	private java.lang.String operator;
+	@XmlElement(name = "rightExpr")
 	private java.lang.String rightExpr;
 
 	public JoinCondition() {

@@ -19,19 +19,38 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "Font")
+@XmlAccessorType(XmlAccessType.NONE)
 public class Font implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "family")
 	private java.lang.String family;
+	@XmlElement(name = "style")
 	private java.lang.String style;
+	@XmlElement(name = "size")
 	private java.lang.Integer size;
+	@XmlElement(name = "effect")
 	private java.lang.String effect;
+	@XmlElement(name = "super")
 	private java.lang.String _super;
+	@XmlElement(name = "weight")
 	private java.lang.String weight;
+	@XmlElement(name = "color")
 	private java.lang.String color;
+	@XmlElement(name = "backgroundColor")
 	private java.lang.String backgroundColor;
+	@XmlElement(name = "bold")
 	private java.lang.Boolean bold;
+	@XmlElement(name = "italic")
 	private java.lang.Boolean italic;
+	@XmlElement(name = "underline")
 	private java.lang.Boolean underline;
+	@XmlElement(name = "lineThrough")
 	private java.lang.Boolean lineThrough;
 
 	public Font() {

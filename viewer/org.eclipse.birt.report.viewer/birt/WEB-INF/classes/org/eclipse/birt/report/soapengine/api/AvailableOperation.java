@@ -1,33 +1,63 @@
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 /**
  * AvailableOperation - simplified DTO, SOAP-free.
  */
+@XmlRootElement(name = "AvailableOperation")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class AvailableOperation {
-
+	@XmlElement(name = "SaveView")
 	private Boolean saveView;
+	@XmlElement(name = "ApplyView")
 	private Boolean applyView;
+	@XmlElement(name = "Print")
 	private Boolean print;
+	@XmlElement(name = "Export")
 	private Boolean export;
+	@XmlElement(name = "Toc")
 	private Boolean toc;
+	@XmlElement(name = "Undo")
 	private Boolean undo;
+	@XmlElement(name = "Redo")
 	private Boolean redo;
+	@XmlElement(name = "SortAsc")
 	private Boolean sortAsc;
+	@XmlElement(name = "SortDsc")
 	private Boolean sortDsc;
+	@XmlElement(name = "AdvancedSort")
 	private Boolean advancedSort;
+	@XmlElement(name = "AddGroup")
 	private Boolean addGroup;
+	@XmlElement(name = "DeleteGroup")
 	private Boolean deleteGroup;
+	@XmlElement(name = "HideColumn")
 	private Boolean hideColumn;
+	@XmlElement(name = "ShowColumns")
 	private Boolean showColumns;
+	@XmlElement(name = "ReorderColumns")
 	private Boolean reorderColumns;
+	@XmlElement(name = "Filter")
 	private Boolean filter;
+	@XmlElement(name = "Calculation")
 	private Boolean calculation;
+	@XmlElement(name = "Aggregation")
 	private Boolean aggregation;
+	@XmlElement(name = "ChangeFont")
 	private Boolean changeFont;
+	@XmlElement(name = "Format")
 	private Boolean format;
+	@XmlElement(name = "Text")
 	private Boolean text;
+	@XmlElement(name = "AlignLeft")
 	private Boolean alignLeft;
+	@XmlElement(name = "AlignCenter")
 	private Boolean alignCenter;
+	@XmlElement(name = "AlignRight")
 	private Boolean alignRight;
 
 	// Konštruktory

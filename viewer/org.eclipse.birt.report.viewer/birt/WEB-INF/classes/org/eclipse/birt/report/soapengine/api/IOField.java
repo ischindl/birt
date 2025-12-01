@@ -19,9 +19,18 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "IOField")
+@XmlAccessorType(XmlAccessType.NONE)
 public class IOField implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "name")
 	private java.lang.String name;
+	@XmlElement(name = "displayName")
 	private java.lang.String displayName;
 
 	public IOField() {

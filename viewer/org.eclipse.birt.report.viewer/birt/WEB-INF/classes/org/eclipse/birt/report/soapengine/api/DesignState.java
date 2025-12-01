@@ -19,13 +19,24 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "DesignState")
+@XmlAccessorType(XmlAccessType.NONE)
 public class DesignState implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "isBlank")
 	private java.lang.Boolean isBlank;
+	@XmlElement(name = "editable")
 	private java.lang.Boolean editable;
 	/** can create a new report */
+	@XmlElement(name = "canNew")
 	private java.lang.Boolean canNew;
 	/** report name */
+	@XmlElement(name = "rptName")
 	private java.lang.String rptName;
 
 	public DesignState() {

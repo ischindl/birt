@@ -16,8 +16,6 @@ package org.eclipse.birt.report.service.actionhandler;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.eclipse.birt.report.IBirtConstants;
 import org.eclipse.birt.report.context.BaseAttributeBean;
 import org.eclipse.birt.report.context.IContext;
@@ -37,6 +35,8 @@ import org.eclipse.birt.report.soapengine.api.Update;
 import org.eclipse.birt.report.soapengine.api.UpdateData;
 import org.eclipse.birt.report.utility.BirtUtility;
 import org.eclipse.birt.report.utility.ParameterAccessor;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 abstract public class AbstractBaseActionHandler implements IActionHandler {
 
@@ -232,25 +232,28 @@ abstract public class AbstractBaseActionHandler implements IActionHandler {
 				secondComma = id.length();
 			}
 			String type = id.substring(firstComma + 1, secondComma);
-			if (ReportIdType._Document.equalsIgnoreCase(type) || ReportIdType._Table.equalsIgnoreCase(type)
-					|| ReportIdType._Chart.equalsIgnoreCase(type) || ReportIdType._Extended.equalsIgnoreCase(type)
-					|| ReportIdType._Label.equalsIgnoreCase(type) || ReportIdType._Group.equalsIgnoreCase(type)
+			if (ReportIdType.Document.value().equalsIgnoreCase(type)
+					|| ReportIdType.Table.value().equalsIgnoreCase(type)
+					|| ReportIdType.Chart.value().equalsIgnoreCase(type)
+					|| ReportIdType.Extended.value().equalsIgnoreCase(type)
+					|| ReportIdType.Label.value().equalsIgnoreCase(type)
+					|| ReportIdType.Group.value().equalsIgnoreCase(type)
 					|| "ColoumnInfo".equalsIgnoreCase(type)) //$NON-NLS-1$
 			// TODO: emitter need to fix its name.
 			{
 				ReportId reportId = new ReportId();
 				reportId.setId(id.substring(0, id.indexOf(',')));
 
-				if (ReportIdType._Document.equalsIgnoreCase(type)) {
+				if (ReportIdType.Document.value().equalsIgnoreCase(type)) {
 					reportId.setType(ReportIdType.Document);
-				} else if (ReportIdType._Table.equalsIgnoreCase(type)) {
+				} else if (ReportIdType.Table.value().equalsIgnoreCase(type)) {
 					reportId.setType(ReportIdType.Table);
-				} else if (ReportIdType._Chart.equalsIgnoreCase(type)
-						|| ReportIdType._Extended.equalsIgnoreCase(type)) {
+				} else if (ReportIdType.Chart.value().equalsIgnoreCase(type)
+						|| ReportIdType.Extended.value().equalsIgnoreCase(type)) {
 					reportId.setType(ReportIdType.Chart);
-				} else if (ReportIdType._Label.equalsIgnoreCase(type)) {
+				} else if (ReportIdType.Label.value().equalsIgnoreCase(type)) {
 					reportId.setType(ReportIdType.Label);
-				} else if (ReportIdType._Group.equalsIgnoreCase(type)) {
+				} else if (ReportIdType.Group.value().equalsIgnoreCase(type)) {
 					reportId.setType(ReportIdType.Group);
 				} else if ("ColoumnInfo".equalsIgnoreCase(type)) //$NON-NLS-1$
 				{

@@ -19,11 +19,22 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "FilterClause")
+@XmlAccessorType(XmlAccessType.NONE)
 public class FilterClause implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "column")
 	private org.eclipse.birt.report.soapengine.api.ColumnDefinition column;
+	@XmlElement(name = "columnName")
 	private org.eclipse.birt.report.soapengine.api.BoundDataColumn columnName;
+	@XmlElement(name = "filterOp")
 	private java.lang.String filterOp;
+	@XmlElement(name = "operand")
 	private java.lang.String[] operand;
 
 	public FilterClause() {

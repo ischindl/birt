@@ -1,8 +1,18 @@
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "BRDExpression")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BRDExpression {
+	@XmlElement(name = "Expression")
 	private String expression;
+	@XmlElement(name = "IsValid")
 	private Boolean isValid;
+	@XmlElement(name = "ParserError")
 	private String parserError;
 
 	public BRDExpression() {

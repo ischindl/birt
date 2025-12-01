@@ -19,55 +19,41 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
-public class FilterType implements java.io.Serializable {
-	private static final long serialVersionUID = 1L;
-	private java.lang.String _value_;
-	private static java.util.HashMap _table_ = new java.util.HashMap();
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
 
-	// Constructor
-	protected FilterType(java.lang.String value) {
-		_value_ = value;
-		_table_.put(_value_, this);
+@XmlType(name = "FilterType")
+@XmlEnum(String.class)
+public enum FilterType {
+
+	@XmlEnumValue("Simple")
+	SIMPLE("Simple"),
+
+	@XmlEnumValue("Advanced")
+	ADVANCED("Advanced");
+
+	private final String value;
+
+	FilterType(String value) {
+		this.value = value;
 	}
 
-	public static final java.lang.String _Simple = "Simple";
-	public static final java.lang.String _Advanced = "Advanced";
-	public static final FilterType Simple = new FilterType(_Simple);
-	public static final FilterType Advanced = new FilterType(_Advanced);
-
-	public java.lang.String getValue() {
-		return _value_;
+	public String value() {
+		return value;
 	}
 
-	public static FilterType fromValue(java.lang.String value) throws java.lang.IllegalArgumentException {
-		FilterType enumeration = (FilterType) _table_.get(value);
-		if (enumeration == null) {
-			throw new java.lang.IllegalArgumentException();
+	public static FilterType fromValue(String value) {
+		for (FilterType t : FilterType.values()) {
+			if (t.value.equals(value)) {
+				return t;
+			}
 		}
-		return enumeration;
-	}
-
-	public static FilterType fromString(java.lang.String value) throws java.lang.IllegalArgumentException {
-		return fromValue(value);
+		throw new IllegalArgumentException("Unknown FilterType: " + value);
 	}
 
 	@Override
-	public boolean equals(java.lang.Object obj) {
-		return (obj == this);
+	public String toString() {
+		return value;
 	}
-
-	@Override
-	public int hashCode() {
-		return toString().hashCode();
-	}
-
-	@Override
-	public java.lang.String toString() {
-		return _value_;
-	}
-
-	public java.lang.Object readResolve() throws java.io.ObjectStreamException {
-		return fromValue(_value_);
-	}
-
 }

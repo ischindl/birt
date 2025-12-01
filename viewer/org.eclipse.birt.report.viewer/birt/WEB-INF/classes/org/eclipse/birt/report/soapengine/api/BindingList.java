@@ -2,7 +2,15 @@ package org.eclipse.birt.report.soapengine.api;
 
 import java.util.Arrays;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "BindingList")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BindingList {
+	@XmlElement(name = "Binding")
 	private Binding[] binding;
 
 	public BindingList() {

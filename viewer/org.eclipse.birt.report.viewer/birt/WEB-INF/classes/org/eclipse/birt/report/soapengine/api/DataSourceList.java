@@ -19,8 +19,16 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "DataSourceList")
+@XmlAccessorType(XmlAccessType.NONE)
 public class DataSourceList implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "DataSource")
 	private org.eclipse.birt.report.soapengine.api.DataSource[] dataSource;
 
 	public DataSourceList() {
@@ -102,4 +110,4 @@ public class DataSourceList implements java.io.Serializable {
 		return _hashCode;
 	}
 
-	}
+}

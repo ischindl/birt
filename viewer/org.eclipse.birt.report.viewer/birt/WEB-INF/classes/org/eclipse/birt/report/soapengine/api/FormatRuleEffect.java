@@ -19,14 +19,28 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "FormatRuleEffect")
+@XmlAccessorType(XmlAccessType.NONE)
 public class FormatRuleEffect implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "Font")
 	private java.lang.String font;
+	@XmlElement(name = "Size")
 	private java.lang.Double size;
+	@XmlElement(name = "Color")
 	private java.lang.String color;
+	@XmlElement(name = "BackgroundColor")
 	private java.lang.String backgroundColor;
+	@XmlElement(name = "Bold")
 	private java.lang.Boolean bold;
+	@XmlElement(name = "Italic")
 	private java.lang.Boolean italic;
+	@XmlElement(name = "Underline")
 	private java.lang.Boolean underline;
 
 	public FormatRuleEffect() {

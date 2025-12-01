@@ -12,7 +12,7 @@ import jakarta.xml.bind.annotation.XmlType;
 /**
  * Represents a setting for an aggregate in a BIRT report.
  */
-@XmlRootElement(name = "AggregateSetting", namespace = "http://schemas.eclipse.org/birt")
+@XmlRootElement(name = "AggregateSetting")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AggregateSetting", propOrder = { "enable", "showInFooter", "groupName" })
 public class AggregateSetting implements Serializable {

@@ -19,19 +19,32 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 /**
  * Class for TOC (table of content)
  *
  * @since 3.3
  *
  */
+@XmlRootElement(name = "TOC")
+@XmlAccessorType(XmlAccessType.NONE)
 public class TOC implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "Id")
 	private java.lang.String id;
+	@XmlElement(name = "DisplayName")
 	private java.lang.String displayName;
+	@XmlElement(name = "Bookmark")
 	private java.lang.String bookmark;
+	@XmlElement(name = "Style")
 	private java.lang.String style;
+	@XmlElement(name = "IsLeaf")
 	private java.lang.Boolean isLeaf;
+	@XmlElement(name = "Child")
 	private org.eclipse.birt.report.soapengine.api.TOC[] child;
 
 	/**

@@ -3,13 +3,24 @@ package org.eclipse.birt.report.soapengine.api;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ChartAppearance")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ChartAppearance implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "ShowLegend")
 	private Boolean showLegend;
+	@XmlElement(name = "ShowValues")
 	private Boolean showValues;
+	@XmlElement(name = "Location")
 	private ChartLocation location;
+	@XmlElement(name = "Width")
 	private String width;
+	@XmlElement(name = "Height")
 	private String height;
 
 	public ChartAppearance() {

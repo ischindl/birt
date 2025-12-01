@@ -2,10 +2,18 @@ package org.eclipse.birt.report.soapengine.api;
 
 import java.io.Serializable;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ColumnProperties")
+@XmlAccessorType(XmlAccessType.NONE)
 public class ColumnProperties implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "Width")
 	private double width;
+	@XmlElement(name = "Alignment")
 	private Alignment alignment;
 
 	public ColumnProperties() {

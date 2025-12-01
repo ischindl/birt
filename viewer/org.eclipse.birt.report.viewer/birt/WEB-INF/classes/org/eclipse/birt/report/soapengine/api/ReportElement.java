@@ -19,12 +19,24 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ReportElement")
+@XmlAccessorType(XmlAccessType.NONE)
 public class ReportElement implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "Id")
 	private long id;
+	@XmlElement(name = "Visible")
 	private boolean visible;
+	@XmlElement(name = "Name")
 	private java.lang.String name;
+	@XmlElement(name = "Description")
 	private java.lang.String description;
+	@XmlElement(name = "DataSetUsed")
 	private java.lang.Long dataSetUsed;
 
 	public ReportElement() {

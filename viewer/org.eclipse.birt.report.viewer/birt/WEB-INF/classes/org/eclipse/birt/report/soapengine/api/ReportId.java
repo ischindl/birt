@@ -19,10 +19,20 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ReportId")
+@XmlAccessorType(XmlAccessType.NONE)
 public class ReportId implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "Id")
 	private java.lang.String id;
+	@XmlElement(name = "Type")
 	private org.eclipse.birt.report.soapengine.api.ReportIdType type;
+	@XmlElement(name = "RptElementId")
 	private java.lang.Long rptElementId;
 
 	public ReportId() {

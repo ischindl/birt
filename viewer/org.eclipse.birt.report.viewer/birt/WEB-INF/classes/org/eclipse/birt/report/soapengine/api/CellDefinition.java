@@ -3,16 +3,30 @@ package org.eclipse.birt.report.soapengine.api;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "CellDefinition")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CellDefinition implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "Level")
 	private int level;
+	@XmlElement(name = "IsHeader")
 	private boolean isHeader;
+	@XmlElement(name = "RowIndex")
 	private int rowIndex;
+	@XmlElement(name = "CellIndex")
 	private int cellIndex;
+	@XmlElement(name = "Font")
 	private Font font;
+	@XmlElement(name = "Format")
 	private Format format;
+	@XmlElement(name = "Properties")
 	private ColumnProperties properties;
+	@XmlElement(name = "Alignment")
 	private Alignment alignment;
 
 	public CellDefinition() {

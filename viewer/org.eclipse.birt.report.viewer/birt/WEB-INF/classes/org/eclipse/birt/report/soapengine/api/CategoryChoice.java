@@ -3,10 +3,18 @@ package org.eclipse.birt.report.soapengine.api;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "CategoryChoice")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CategoryChoice implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "Category")
 	private String category;
+	@XmlElement(name = "Pattern")
 	private String pattern;
 
 	public CategoryChoice() {

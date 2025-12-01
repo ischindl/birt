@@ -19,19 +19,33 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "TableLayout")
+@XmlAccessorType(XmlAccessType.NONE)
 public class TableLayout implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	/** Design id of table */
+	@XmlElement(name = "id")
 	private long id;
 	/** Number of sections */
+	@XmlElement(name = "s_Count")
 	private int s_Count;
 	/** Number of ERNI groups */
+	@XmlElement(name = "g_Count")
 	private int g_Count;
 	/** The information of column header row */
+	@XmlElement(name = "CH_Row")
 	private org.eclipse.birt.report.soapengine.api.TableRowInfo CH_Row;
 	/** The information of the table level chart row */
+	@XmlElement(name = "TC_Row")
 	private org.eclipse.birt.report.soapengine.api.TableRowInfo TC_Row;
+	@XmlElement(name = "sections")
 	private org.eclipse.birt.report.soapengine.api.TableSections sections;
+	@XmlElement(name = "groups")
 	private org.eclipse.birt.report.soapengine.api.TableGroups groups;
 
 	public TableLayout() {

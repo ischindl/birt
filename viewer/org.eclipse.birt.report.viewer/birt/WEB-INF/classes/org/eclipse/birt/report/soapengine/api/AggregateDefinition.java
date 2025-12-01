@@ -12,7 +12,7 @@ import jakarta.xml.bind.annotation.XmlType;
 /**
  * Represents an aggregate definition in a BIRT report.
  */
-@XmlRootElement(name = "AggregateDefinition", namespace = "http://schemas.eclipse.org/birt")
+@XmlRootElement(name = "AggregateDefinition")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AggregateDefinition", propOrder = { "func", "subTotal", "grandTotal", "intParameter", "sortDir" })
 public class AggregateDefinition implements Serializable {

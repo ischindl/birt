@@ -19,16 +19,27 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 /**
  * A complex type to represent the condition expression used in filter.
  */
+@XmlRootElement(name = "FilterExpression")
+@XmlAccessorType(XmlAccessType.NONE)
 public class FilterExpression implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	/** Represents Equality operator, i.e., '=='. */
+	@XmlElement(name = "Clause")
 	private org.eclipse.birt.report.soapengine.api.FilterClause clause;
+	@XmlElement(name = "Not")
 	private org.eclipse.birt.report.soapengine.api.FilterExpression[] not;
+	@XmlElement(name = "Or")
 	private org.eclipse.birt.report.soapengine.api.FilterExpression[] or;
 	/** Optional AND clause which can again be nested with AND/OR clauses */
+	@XmlElement(name = "And")
 	private org.eclipse.birt.report.soapengine.api.FilterExpression[] and;
 
 	public FilterExpression() {

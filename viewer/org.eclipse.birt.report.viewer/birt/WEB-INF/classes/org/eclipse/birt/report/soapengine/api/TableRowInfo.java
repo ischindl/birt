@@ -19,21 +19,31 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 /**
  * information of a table row
  */
+@XmlRootElement(name = "TableRowInfo")
+@XmlAccessorType(XmlAccessType.NONE)
 public class TableRowInfo implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * The group level of this row. -1 is used to indicated table level rows.
 	 */
+	@XmlElement(name = "level")
 	private int level;
 	/**
 	 * The position of this row in the group header or group footer. Index starts
 	 * from 0.
 	 */
+	@XmlElement(name = "index")
 	private int index;
 	/** Whether the row is in header or in footer */
+	@XmlElement(name = "isHeader")
 	private boolean isHeader;
 
 	public TableRowInfo() {

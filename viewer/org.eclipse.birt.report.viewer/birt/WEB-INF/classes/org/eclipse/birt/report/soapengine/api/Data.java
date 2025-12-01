@@ -3,48 +3,94 @@ package org.eclipse.birt.report.soapengine.api;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "Data")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Data implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@XmlElement(name = "Font")
 	private Font font;
+	@XmlElement(name = "ResultSets")
 	private ResultSets resultSets;
+	@XmlElement(name = "Format")
 	private Format format;
+	@XmlElement(name = "TOC")
 	private TOC TOC;
+	@XmlElement(name = "Export")
 	private Export export;
+	@XmlElement(name = "CascadeParameter")
 	private CascadeParameter cascadeParameter;
+	@XmlElement(name = "Filter")
 	private Filter filter;
+	@XmlElement(name = "FilterList")
 	private FilterList filterList;
+	@XmlElement(name = "ColumnValues")
 	private Vector columnValues;
+	@XmlElement(name = "Page")
 	private Page page;
+	@XmlElement(name = "DataSets")
 	private DataSetList dataSets;
+	@XmlElement(name = "ReportElementList")
 	private ReportElementList reportElementList;
+	@XmlElement(name = "Themes")
 	private ThemeList themes;
+	@XmlElement(name = "ColumnDefs")
 	private ColumnDefinitionGroup columnDefs;
+	@XmlElement(name = "GroupDetail")
 	private GroupDetail groupDetail;
+	@XmlElement(name = "CellDef")
 	private CellDefinition cellDef;
+	@XmlElement(name = "SectionDef")
 	private SectionDefinition sectionDef;
+	@XmlElement(name = "Chart")
 	private ChartProperties chart;
+	@XmlElement(name = "LabelText")
 	private String labelText;
+	@XmlElement(name = "FileBrowsing")
 	private FileBrowsing fileBrowsing;
+	@XmlElement(name = "DataSources")
 	private DataSourceList dataSources;
+	@XmlElement(name = "BindingList")
 	private BindingList bindingList;
+	@XmlElement(name = "DataSetDef")
 	private DataSet dataSetDef;
+	@XmlElement(name = "DataSetsToUse")
 	private DataSetList dataSetsToUse;
+	@XmlElement(name = "DesignState")
 	private DesignState designState;
+	@XmlElement(name = "ToolbarState")
 	private ToolbarState toolbarState;
+	@XmlElement(name = "RedirectURL")
 	private String redirectURL;
+	@XmlElement(name = "PopupURL")
 	private String popupURL;
+	@XmlElement(name = "BRDExpression")
 	private BRDExpression BRDExpression;
+	@XmlElement(name = "JoinMetadata")
 	private JoinMetadata joinMetadata;
+	@XmlElement(name = "BoundDataColumnList")
 	private BoundDataColumnList boundDataColumnList;
+	@XmlElement(name = "IOInfoList")
 	private IOInfoList IOInfoList;
+	@XmlElement(name = "TableColContextMenu")
 	private TableColContextMenuState tableColContextMenu;
+	@XmlElement(name = "TableSectContextMenu")
 	private TableSectionContextMenuState tableSectContextMenu;
+	@XmlElement(name = "TableContextMenu")
 	private TableContextMenuState tableContextMenu;
+	@XmlElement(name = "Confirmation")
 	private String confirmation;
+	@XmlElement(name = "TableLayoutList")
 	private TableLayoutList tableLayoutList;
+	@XmlElement(name = "AvailableOperation")
 	private AvailableOperation availableOperation;
+	@XmlElement(name = "SortDefinitionList")
 	private SortDefinitionList sortDefinitionList;
 
 	public Data() {

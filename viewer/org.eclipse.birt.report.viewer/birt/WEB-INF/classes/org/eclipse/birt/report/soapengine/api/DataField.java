@@ -3,14 +3,25 @@ package org.eclipse.birt.report.soapengine.api;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "DataField")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DataField implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "Name")
 	private String name;
+	@XmlElement(name = "Id")
 	private String id;
+	@XmlElement(name = "Type")
 	private String type;
+	@XmlElement(name = "DisplayName")
 	private String displayName;
+	@XmlElement(name = "Description")
 	private String description;
 
 	public DataField() {

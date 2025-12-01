@@ -1,0 +1,2 @@
+@jakarta.xml.bind.annotation.XmlSchema(namespace = "http://schemas.eclipse.org/birt", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)
+package org.eclipse.birt.report.soapengine.api;

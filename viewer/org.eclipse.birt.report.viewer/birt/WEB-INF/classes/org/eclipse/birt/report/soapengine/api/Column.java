@@ -12,7 +12,7 @@ import jakarta.xml.bind.annotation.XmlType;
 /**
  * Represents a report column definition in BIRT.
  */
-@XmlRootElement(name = "Column", namespace = "http://schemas.eclipse.org/birt")
+@XmlRootElement(name = "Column")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Column", propOrder = { "name", "label", "visibility" })
 public class Column implements Serializable {

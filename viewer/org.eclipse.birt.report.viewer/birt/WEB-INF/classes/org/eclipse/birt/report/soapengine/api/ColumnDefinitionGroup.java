@@ -3,9 +3,16 @@ package org.eclipse.birt.report.soapengine.api;
 import java.io.Serializable;
 import java.util.Arrays;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ColumnDefinitionGroup")
+@XmlAccessorType(XmlAccessType.NONE)
 public class ColumnDefinitionGroup implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "ColumnDefinition")
 	private ColumnDefinition[] columnDef;
 
 	public ColumnDefinitionGroup() {

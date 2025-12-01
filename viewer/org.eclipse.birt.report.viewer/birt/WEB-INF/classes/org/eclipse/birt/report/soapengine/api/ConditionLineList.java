@@ -3,9 +3,16 @@ package org.eclipse.birt.report.soapengine.api;
 import java.io.Serializable;
 import java.util.Arrays;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ConditionLineList")
+@XmlAccessorType(XmlAccessType.NONE)
 public class ConditionLineList implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "conditionLine")
 	private ConditionLine[] conditionLine;
 
 	public ConditionLineList() {

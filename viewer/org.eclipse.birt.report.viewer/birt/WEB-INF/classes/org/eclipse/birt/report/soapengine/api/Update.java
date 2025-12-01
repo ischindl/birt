@@ -19,10 +19,20 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "Update")
+@XmlAccessorType(XmlAccessType.NONE)
 public class Update implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "UpdateContent")
 	private org.eclipse.birt.report.soapengine.api.UpdateContent updateContent;
+	@XmlElement(name = "UpdateDialog")
 	private org.eclipse.birt.report.soapengine.api.UpdateDialog updateDialog;
+	@XmlElement(name = "UpdateData")
 	private org.eclipse.birt.report.soapengine.api.UpdateData updateData;
 
 	public Update() {

@@ -4,13 +4,24 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ChartDataBinding")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ChartDataBinding implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	@XmlElement(name = "TableId")
 	private String tableId;
+	@XmlElement(name = "Section")
 	private SectionDefinition section;
+	@XmlElement(name = "XAxis")
 	private AxisDataBinding XAxis;
+	@XmlElement(name = "YAxis")
 	private AxisDataBinding[] YAxis;
+	@XmlElement(name = "ShowXLabelsVertically")
 	private int showXLabelsVertically;
 
 	public ChartDataBinding() {

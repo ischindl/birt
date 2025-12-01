@@ -1,10 +1,21 @@
 package org.eclipse.birt.report.soapengine.api;
 
-/**
- * Simplified alignment enum (SOAP-free version).
- */
+import jakarta.xml.bind.annotation.XmlEnum;
+import jakarta.xml.bind.annotation.XmlEnumValue;
+import jakarta.xml.bind.annotation.XmlType;
+
+@XmlType(name = "Alignment")
+@XmlEnum(String.class)
 public enum Alignment {
-	LEFT("left"), RIGHT("right"), CENTER("center");
+
+	@XmlEnumValue("left")
+	LEFT("left"),
+
+	@XmlEnumValue("right")
+	RIGHT("right"),
+
+	@XmlEnumValue("center")
+	CENTER("center");
 
 	private final String value;
 
@@ -12,17 +23,17 @@ public enum Alignment {
 		this.value = value;
 	}
 
-	public String getValue() {
+	public String value() {
 		return value;
 	}
 
 	public static Alignment fromValue(String value) {
-		for (Alignment a : values()) {
-			if (a.value.equalsIgnoreCase(value)) {
+		for (Alignment a : Alignment.values()) {
+			if (a.value.equals(value)) {
 				return a;
 			}
 		}
-		throw new IllegalArgumentException("Unknown alignment: " + value);
+		throw new IllegalArgumentException("Unknown Alignment: " + value);
 	}
 
 	@Override

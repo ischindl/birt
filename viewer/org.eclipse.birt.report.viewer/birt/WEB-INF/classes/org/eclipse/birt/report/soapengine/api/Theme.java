@@ -19,10 +19,20 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "Theme")
+@XmlAccessorType(XmlAccessType.NONE)
 public class Theme implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "Id")
 	private long id;
+	@XmlElement(name = "Name")
 	private java.lang.String name;
+	@XmlElement(name = "DisplayName")
 	private java.lang.String displayName;
 
 	public Theme() {

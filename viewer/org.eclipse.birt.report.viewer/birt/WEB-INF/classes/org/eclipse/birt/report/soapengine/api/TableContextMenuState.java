@@ -19,13 +19,23 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "TableContextMenuState")
+@XmlAccessorType(XmlAccessType.NONE)
 public class TableContextMenuState implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	/** Can insert a chart in this section */
+	@XmlElement(name = "canAddChart")
 	private boolean canAddChart;
 	/** Can edit a chart in this section */
+	@XmlElement(name = "canEditChart")
 	private boolean canEditChart;
 	/** Can delete a chart in this section */
+	@XmlElement(name = "canDeleteChart")
 	private boolean canDeleteChart;
 
 	public TableContextMenuState() {

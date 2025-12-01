@@ -19,11 +19,22 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "SectionDefinition")
+@XmlAccessorType(XmlAccessType.NONE)
 public class SectionDefinition implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "id")
 	private java.lang.String id;
+	@XmlElement(name = "tableId")
 	private java.lang.String tableId;
+	@XmlElement(name = "level")
 	private java.lang.Integer level;
+	@XmlElement(name = "sortDir")
 	private org.eclipse.birt.report.soapengine.api.SortingDirection sortDir;
 
 	public SectionDefinition() {
@@ -165,4 +176,4 @@ public class SectionDefinition implements java.io.Serializable {
 		return _hashCode;
 	}
 
-	}
+}

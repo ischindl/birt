@@ -19,11 +19,19 @@
 
 package org.eclipse.birt.report.soapengine.api;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 /**
  * list of G_Info
  */
+@XmlRootElement(name = "TableGroups")
+@XmlAccessorType(XmlAccessType.NONE)
 public class TableGroups implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@XmlElement(name = "group")
 	private org.eclipse.birt.report.soapengine.api.G_Info[] group;
 
 	public TableGroups() {
