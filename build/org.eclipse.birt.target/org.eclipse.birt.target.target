@@ -27,10 +27,10 @@
       <unit id="jakarta.transaction-api" version="0.0.0"/>
       <unit id="jakarta.xml.bind-api" version="[4.0.0,5.0.0)"/>
       <unit id="jakarta.xml.soap-api" version="0.0.0"/>
-      <unit id="javax.servlet-api" version="0.0.0"/>
+      <unit id="jakarta.servlet-api" version="0.0.0"/>
+      <unit id="jakarta.servlet.jsp-api" version="0.0.0"/>
       <unit id="javax.xml.rpc-api" version="0.0.0"/>
       <unit id="org.apache.aries.spifly.dynamic.bundle" version="0.0.0"/>
-      <unit id="org.apache.axis" version="0.0.0"/>
       <unit id="org.apache.batik.anim" version="0.0.0"/>
       <unit id="org.apache.batik.awt.util" version="0.0.0"/>
       <unit id="org.apache.batik.bridge" version="0.0.0"/>

@@ -24,17 +24,17 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterRegistration;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-import javax.servlet.ServletRegistration.Dynamic;
-import javax.servlet.SessionCookieConfig;
-import javax.servlet.SessionTrackingMode;
-import javax.servlet.descriptor.JspConfigDescriptor;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterRegistration;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRegistration;
+import jakarta.servlet.ServletRegistration.Dynamic;
+import jakarta.servlet.SessionCookieConfig;
+import jakarta.servlet.SessionTrackingMode;
+import jakarta.servlet.descriptor.JspConfigDescriptor;
 
 /**
  * Mock a ServletContext class for Viewer UnitTest
@@ -264,16 +264,6 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getServlet(java.lang.String)
-	 */
-	@Override
-	public Servlet getServlet(String name) throws ServletException {
-		throw new UnsupportedOperationException("Do not support getServlet operation!"); //$NON-NLS-1$
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
 	 * @see javax.servlet.ServletContext#getServletContextName()
 	 */
 	@Override
@@ -281,25 +271,8 @@ public class ServletContextSimulator implements ServletContext {
 		throw new UnsupportedOperationException("Do not support getServletContextName operation!"); //$NON-NLS-1$
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see javax.servlet.ServletContext#getServletNames()
-	 */
-	@Override
-	public Enumeration getServletNames() {
-		throw new UnsupportedOperationException("Do not support getServletNames operation!"); //$NON-NLS-1$
-	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see javax.servlet.ServletContext#getServlets()
-	 */
-	@Override
-	public Enumeration getServlets() {
-		throw new UnsupportedOperationException("Do not support getServlets operation!"); //$NON-NLS-1$
-	}
+
 
 	/*
 	 * (non-Javadoc)
@@ -309,16 +282,6 @@ public class ServletContextSimulator implements ServletContext {
 	@Override
 	public void log(String content) {
 		System.out.println(content);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see javax.servlet.ServletContext#log(java.lang.Exception, java.lang.String)
-	 */
-	@Override
-	public void log(Exception exception, String content) {
-		System.out.println(content + "--" + exception.getMessage()); //$NON-NLS-1$
 	}
 
 	/*
@@ -423,19 +386,20 @@ public class ServletContextSimulator implements ServletContext {
 	}
 
 	@Override
-	public javax.servlet.FilterRegistration.Dynamic addFilter(String filterName, String className) {
+	public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, String className) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public javax.servlet.FilterRegistration.Dynamic addFilter(String filterName, Filter filter) {
+	public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName, Filter filter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public javax.servlet.FilterRegistration.Dynamic addFilter(String filterName, Class<? extends Filter> filterClass) {
+	public jakarta.servlet.FilterRegistration.Dynamic addFilter(String filterName,
+			Class<? extends Filter> filterClass) {
 		// TODO Auto-generated method stub
 		return null;
 	}
