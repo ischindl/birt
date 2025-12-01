@@ -40,8 +40,8 @@ public class ViewerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private IFragment viewer;
-	private IFragment run;
+	IFragment viewer;
+	IFragment run;
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -63,7 +63,7 @@ public class ViewerServlet extends HttpServlet {
 		}
 	}
 
-	private IContext createContext(HttpServletRequest request, HttpServletResponse response) throws BirtException {
+	protected IContext createContext(HttpServletRequest request, HttpServletResponse response) throws BirtException {
 		BirtReportServiceFactory.getReportService().setContext(getServletContext(), null);
 		return new BirtContext(request, response);
 	}
@@ -126,5 +126,9 @@ public class ViewerServlet extends HttpServlet {
 			throws IOException {
 		e.printStackTrace();
 		BirtUtility.appendErrorMessage(response.getOutputStream(), e);
+	}
+
+	public IFragment getViewer() {
+		return viewer;
 	}
 }
