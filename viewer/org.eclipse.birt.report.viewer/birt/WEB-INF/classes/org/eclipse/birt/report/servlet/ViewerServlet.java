@@ -15,28 +15,34 @@
 package org.eclipse.birt.report.servlet;
 
 import java.io.IOException;
-
-import jakarta.servlet.ServletConfig;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import java.util.Iterator;
 
 import org.eclipse.birt.core.exception.BirtException;
 import org.eclipse.birt.report.IBirtConstants;
 import org.eclipse.birt.report.context.BirtContext;
 import org.eclipse.birt.report.context.IContext;
+import org.eclipse.birt.report.exception.ViewerException;
 import org.eclipse.birt.report.presentation.aggregation.IFragment;
 import org.eclipse.birt.report.presentation.aggregation.layout.FramesetFragment;
 import org.eclipse.birt.report.presentation.aggregation.layout.RunFragment;
+import org.eclipse.birt.report.resource.BirtResources;
+import org.eclipse.birt.report.resource.ResourceConstants;
 import org.eclipse.birt.report.service.BirtReportServiceFactory;
 import org.eclipse.birt.report.service.BirtViewerReportService;
+import org.eclipse.birt.report.session.IViewingSession;
+import org.eclipse.birt.report.session.ViewingSessionUtil;
 import org.eclipse.birt.report.utility.BirtUtility;
+import org.eclipse.birt.report.utility.ParameterAccessor;
+
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation of BIRT Web Viewer (SOAP-free version).
  */
-public class ViewerServlet extends HttpServlet {
+public class ViewerServlet extends BaseReportEngineServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -44,29 +50,33 @@ public class ViewerServlet extends HttpServlet {
 	IFragment run;
 
 	@Override
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
-		try {
-			BirtReportServiceFactory.init(new BirtViewerReportService(config.getServletContext()));
+	public void __init(ServletConfig config) {
+		BirtReportServiceFactory.init(new BirtViewerReportService(config.getServletContext()));
 
-			// initialize fragments
-			viewer = new FramesetFragment();
-			viewer.buildComposite();
-			viewer.setJSPRootPath("/webcontent/birt"); //$NON-NLS-1$
+		// initialize fragments
+		viewer = new FramesetFragment();
+		viewer.buildComposite();
+		viewer.setJSPRootPath("/webcontent/birt"); //$NON-NLS-1$
 
-			run = new RunFragment();
-			run.buildComposite();
-			run.setJSPRootPath("/webcontent/birt"); //$NON-NLS-1$
-
-		} catch (Exception e) {
-			throw new ServletException("Error initializing BIRT ViewerServlet", e);
-		}
+		run = new RunFragment();
+		run.buildComposite();
+		run.setJSPRootPath("/webcontent/birt"); //$NON-NLS-1$
 	}
 
-	protected IContext createContext(HttpServletRequest request, HttpServletResponse response) throws BirtException {
+	/**
+	 * Init context.
+	 *
+	 * @param request  incoming http request
+	 * @param response http response
+	 * @exception BirtException
+	 * @return IContext
+	 */
+	@Override
+	protected IContext __getContext(HttpServletRequest request, HttpServletResponse response) throws BirtException {
 		BirtReportServiceFactory.getReportService().setContext(getServletContext(), null);
 		return new BirtContext(request, response);
 	}
+
 
 	/**
 	 * Local process http request with GET method.
@@ -78,11 +88,9 @@ public class ViewerServlet extends HttpServlet {
 	 * @return
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void __doGet(IContext context) throws ServletException, IOException, BirtException {
 		try {
-			IContext context = createContext(request, response);
-			String servletPath = request.getServletPath();
+			String servletPath = context.getRequest().getServletPath();
 
 			IFragment activeFragment = null;
 			if (IBirtConstants.SERVLET_PATH_FRAMESET.equalsIgnoreCase(servletPath)) {
@@ -92,18 +100,33 @@ public class ViewerServlet extends HttpServlet {
 			}
 
 			if (activeFragment != null) {
-				activeFragment.service(request, response);
+				activeFragment.service(context.getRequest(), context.getResponse());
 			} else {
-				response.sendError(HttpServletResponse.SC_NOT_FOUND, "Unknown servlet path: " + servletPath);
+				context.getResponse().sendError(HttpServletResponse.SC_NOT_FOUND,
+						"Unknown servlet path: " + servletPath);
 			}
 		} catch (BirtException e) {
-			handleException(request, response, e);
+			__handleNonSoapException(context.getRequest(), context.getResponse(), e);
 		}
 	}
 
+	protected void __handleNonSoapException(HttpServletRequest request, HttpServletResponse response,
+			Exception exception) throws ServletException, IOException {
+		exception.printStackTrace();
+		BirtUtility.appendErrorMessage(response.getOutputStream(), exception);
+	}
+
+	public IFragment getViewer() {
+		return viewer;
+	}
+
+	@Override
+	protected boolean __authenticate(HttpServletRequest request, HttpServletResponse response) {
+		return true;
+	}
+
 	/**
-	 * Locale process http request with POST method. Four different servlet paths
-	 * are expected: "/frameset", "/navigation", "/toolbar", and "/run".
+	 * Handle HTTP POST method.
 	 *
 	 * @param request  incoming http request
 	 * @param response http response
@@ -112,23 +135,96 @@ public class ViewerServlet extends HttpServlet {
 	 * @return
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (!__authenticate(request, response)) {
+			return;
+		}
+
+		// create SOAP URL with post parameters
+		StringBuilder builder = new StringBuilder();
+		Iterator it = request.getParameterMap().keySet().iterator();
+		while (it.hasNext()) {
+			String paramName = (String) it.next();
+			if (paramName != null && paramName.startsWith("__")) //$NON-NLS-1$
+			{
+				String paramValue = ParameterAccessor.urlEncode(ParameterAccessor.getParameter(request, paramName),
+						ParameterAccessor.UTF_8_ENCODE);
+				builder.append("&" + paramName + "=" + paramValue); //$NON-NLS-1$//$NON-NLS-2$
+			}
+		}
+		String soapURL = request.getRequestURL().toString();
+		if (ParameterAccessor.getBaseURL() != null) {
+			soapURL = ParameterAccessor.getBaseURL() + request.getContextPath() + request.getServletPath();
+		}
+
+		builder.deleteCharAt(0);
+		soapURL += "?" + builder.toString(); //$NON-NLS-1$
+
+		request.setAttribute("SoapURL", soapURL); //$NON-NLS-1$
+
+		String requestType = request.getHeader(ParameterAccessor.HEADER_REQUEST_TYPE);
+		boolean isSoapRequest = ParameterAccessor.HEADER_REQUEST_TYPE_SOAP.equalsIgnoreCase(requestType);
+		// refresh the current BIRT viewing session by accessing it
+		IViewingSession session;
+
+		// init context
+		IContext context = null;
 		try {
-			IContext context = createContext(request, response);
-			doGet(request, response); // Same behavior as GET
+			session = ViewingSessionUtil.getSession(request);
+			if (session == null && !isSoapRequest) {
+				if (ViewingSessionUtil.getSessionId(request) == null) {
+					session = ViewingSessionUtil.createSession(request);
+				} else {
+					// if session id passed through the URL, it means this request
+					// was expected to run using a session that has already expired
+					throw new ViewerException(
+							BirtResources.getMessage(ResourceConstants.GENERAL_ERROR_NO_VIEWING_SESSION));
+				}
+			}
+			context = __getContext(request, response);
 		} catch (BirtException e) {
-			handleException(request, response, e);
+			// throw exception
+			__handleNonSoapException(request, response, e);
+			return;
+		}
+
+		try {
+			if (session != null) {
+				session.lock();
+			}
+			__doPost(context);
+
+			if (isSoapRequest) {
+				// Workaround for using axis bundle to invoke SOAP request
+				Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
+
+				super.doPost(request, response);
+			} else {
+				try {
+					if (context.getBean().getException() != null) {
+						__handleNonSoapException(request, response, context.getBean().getException());
+					} else {
+						__doGet(context);
+					}
+				} catch (BirtException e) {
+					__handleNonSoapException(request, response, e);
+				}
+			}
+		} catch (BirtException e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null && !session.isExpired()) {
+				session.unlock();
+			}
 		}
 	}
 
-	private void handleException(HttpServletRequest request, HttpServletResponse response, Exception e)
-			throws IOException {
-		e.printStackTrace();
-		BirtUtility.appendErrorMessage(response.getOutputStream(), e);
+	/**
+	 * @param context
+	 */
+	private void __doPost(IContext context) throws BirtException {
+		// TODO Auto-generated method stub
+
 	}
 
-	public IFragment getViewer() {
-		return viewer;
-	}
 }

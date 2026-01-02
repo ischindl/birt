@@ -94,7 +94,27 @@
 							<classifier>viewservlets</classifier>
 
 							<!-- výsledný názov -->
-<!--							<finalName>viewservlets</finalName>-->
+							<finalName>viewservlets</finalName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+						<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>install-viewer</id>
+						<phase>install</phase>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+						<configuration>
+							<file>${project.build.directory}/viewservlets-viewservlets.jar</file>
+							<groupId>org.eclipse.birt</groupId>
+							<artifactId>viewservlets</artifactId>
+							<version>${project.version}</version>
+							<packaging>jar</packaging>
 						</configuration>
 					</execution>
 				</executions>
