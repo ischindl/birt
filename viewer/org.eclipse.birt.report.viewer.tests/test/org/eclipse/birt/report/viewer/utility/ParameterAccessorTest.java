@@ -19,14 +19,14 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.eclipse.birt.report.IBirtConstants;
 import org.eclipse.birt.report.context.BirtContext;
 import org.eclipse.birt.report.context.ViewerAttributeBean;
 import org.eclipse.birt.report.exception.ViewerException;
 import org.eclipse.birt.report.utility.ParameterAccessor;
 import org.eclipse.birt.report.viewer.util.BaseTestCase;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * TestCases for ParameterAccessor class. For test, mock some objects over http:
@@ -388,8 +388,7 @@ public class ParameterAccessorTest extends BaseTestCase {
 	public void testGetLocaleFromString() {
 		assertNull(ParameterAccessor.getLocaleFromString(null));
 		assertEquals(Locale.US, ParameterAccessor.getLocaleFromString("en_US")); //$NON-NLS-1$
-		assertEquals(new Locale("test"), ParameterAccessor //$NON-NLS-1$
-				.getLocaleFromString("test")); //$NON-NLS-1$
+		assertNull(ParameterAccessor.getLocaleFromString("test")); //$NON-NLS-1$
 	}
 
 	/**
@@ -405,7 +404,7 @@ public class ParameterAccessorTest extends BaseTestCase {
 	 */
 	public void testGetLocale() {
 		// Locale in URL
-		request.addParameter(ParameterAccessor.PARAM_LOCALE, "zh_CN"); //$NON-NLS-1$
+		request.addParameter(ParameterAccessor.PARAM_LOCALE, "zh_Hans_CN"); //$NON-NLS-1$
 		assertEquals(Locale.PRC, ParameterAccessor.getLocale(request));
 		request.removeParameter(ParameterAccessor.PARAM_LOCALE);
 
