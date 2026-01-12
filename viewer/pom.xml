@@ -27,7 +27,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-<!--		<module>org.eclipse.birt.axis.overlay</module>-->
 		<module>org.eclipse.birt.integration.wtp.ui</module>
 		<module>org.eclipse.birt.report.viewer</module>
 		<module>org.eclipse.birt.report.viewer.tests</module>

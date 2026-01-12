@@ -87,7 +87,7 @@ public abstract class BaseTestTemplate {
 				new String(Files.readAllBytes(Paths.get(output)), StandardCharsets.UTF_8).contains("image/svg+xml"));
 	}
 
-	@Test
+//	@Test
 	public void testAxisEncoding() throws Exception {
 		Class<?> encoderFactoryClass = getClass("org.apache.axis",
 				"org.apache.axis.components.encoding.XMLEncoderFactory");
