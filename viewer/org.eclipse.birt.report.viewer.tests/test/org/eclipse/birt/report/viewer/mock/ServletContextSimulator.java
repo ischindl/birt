@@ -74,7 +74,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getAttribute(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#getAttribute(java.lang.String)
 	 */
 	@Override
 	public Object getAttribute(String name) {
@@ -84,7 +84,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getAttributeNames()
+	 * @see jakarta.servlet..ServletContext#getAttributeNames()
 	 */
 	@Override
 	public Enumeration getAttributeNames() {
@@ -99,7 +99,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#removeAttribute(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#removeAttribute(java.lang.String)
 	 */
 	@Override
 	public void removeAttribute(String name) {
@@ -109,7 +109,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getContext(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#getContext(java.lang.String)
 	 */
 	@Override
 	public ServletContext getContext(String uri) {
@@ -119,7 +119,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getInitParameter(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#getInitParameter(java.lang.String)
 	 */
 	@Override
 	public String getInitParameter(String name) {
@@ -138,7 +138,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getInitParameterNames()
+	 * @see jakarta.servlet..ServletContext#getInitParameterNames()
 	 */
 	@Override
 	public Enumeration getInitParameterNames() {
@@ -160,7 +160,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getMajorVersion()
+	 * @see jakarta.servlet..ServletContext#getMajorVersion()
 	 */
 	@Override
 	public int getMajorVersion() {
@@ -170,7 +170,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getMimeType(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#getMimeType(java.lang.String)
 	 */
 	@Override
 	public String getMimeType(String arg0) {
@@ -180,7 +180,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getMinorVersion()
+	 * @see jakarta.servlet..ServletContext#getMinorVersion()
 	 */
 	@Override
 	public int getMinorVersion() {
@@ -190,7 +190,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getNamedDispatcher(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#getNamedDispatcher(java.lang.String)
 	 */
 	@Override
 	public RequestDispatcher getNamedDispatcher(String uri) {
@@ -200,7 +200,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getRealPath(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#getRealPath(java.lang.String)
 	 */
 	@Override
 	public String getRealPath(String path) {
@@ -214,7 +214,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getRequestDispatcher(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#getRequestDispatcher(java.lang.String)
 	 */
 	@Override
 	public RequestDispatcher getRequestDispatcher(String uri) {
@@ -224,7 +224,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getResource(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#getResource(java.lang.String)
 	 */
 	@Override
 	public URL getResource(String path) throws MalformedURLException {
@@ -234,7 +234,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getResourceAsStream(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#getResourceAsStream(java.lang.String)
 	 */
 	@Override
 	public InputStream getResourceAsStream(String arg0) {
@@ -244,7 +244,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getResourcePaths(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#getResourcePaths(java.lang.String)
 	 */
 	@Override
 	public Set getResourcePaths(String arg0) {
@@ -254,7 +254,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getServerInfo()
+	 * @see jakarta.servlet..ServletContext#getServerInfo()
 	 */
 	@Override
 	public String getServerInfo() {
@@ -264,7 +264,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#getServletContextName()
+	 * @see jakarta.servlet..ServletContext#getServletContextName()
 	 */
 	@Override
 	public String getServletContextName() {
@@ -277,7 +277,7 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#log(java.lang.String)
+	 * @see jakarta.servlet..ServletContext#log(java.lang.String)
 	 */
 	@Override
 	public void log(String content) {
@@ -287,7 +287,8 @@ public class ServletContextSimulator implements ServletContext {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see javax.servlet.ServletContext#log(java.lang.String, java.lang.Throwable)
+	 * @see jakarta.servlet..ServletContext#log(java.lang.String,
+	 * java.lang.Throwable)
 	 */
 	@Override
 	public void log(String content, Throwable throwable) {
