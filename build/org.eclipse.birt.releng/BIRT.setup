@@ -569,8 +569,6 @@
             url="https://download.eclipse.org/justj/epp/milestone/latest"/>
         <repository
             url="https://download.eclipse.org/justj/jres/21/updates/release/latest"/>
-        <repository
-            url="file:${git.clone.birt.location}/build/org.eclipse.birt.external-deps/target/repository"/>
       </repositoryList>
       <repositoryList
           name="4.22">
