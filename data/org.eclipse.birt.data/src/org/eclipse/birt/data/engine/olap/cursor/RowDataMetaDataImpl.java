@@ -13,10 +13,9 @@
  *******************************************************************************/
 package org.eclipse.birt.data.engine.olap.cursor;
 
-import javax.olap.OLAPException;
-import javax.olap.cursor.RowDataMetaData;
-
 import org.eclipse.birt.data.engine.olap.driver.IResultSetMetaData;
+import org.eclipse.birt.olap.OLAPException;
+import org.eclipse.birt.olap.cursor.RowDataMetaData;
 
 /**
  *

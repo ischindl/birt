@@ -14,26 +14,15 @@
  * Java(TM) OLAP Interface
  */
 
-package javax.olap.cursor;
+package org.eclipse.birt.olap.cursor;
 
-public interface Timestamp extends javax.olap.query.querycoremodel.NamedObject {
+public interface Time extends org.eclipse.birt.olap.query.querycoremodel.NamedObject {
 
-	javax.olap.cursor.Timestamp valueOf(java.lang.String s) throws javax.olap.OLAPException;
+	org.eclipse.birt.olap.cursor.Time valueOf(java.lang.String s) throws org.eclipse.birt.olap.OLAPException;
 
 	@Override
 	java.lang.String toString();
 
-	int getNanos() throws javax.olap.OLAPException;
-
-	void setNanos(int n) throws javax.olap.OLAPException;
-
-	boolean equals(javax.olap.cursor.Timestamp ts);
-
-	@Override
-	boolean equals(java.lang.Object ts);
-
-	boolean before(javax.olap.cursor.Timestamp ts) throws javax.olap.OLAPException;
-
-	boolean after(javax.olap.cursor.Timestamp ts) throws javax.olap.OLAPException;
+	void setTime(long time) throws org.eclipse.birt.olap.OLAPException;
 
 }

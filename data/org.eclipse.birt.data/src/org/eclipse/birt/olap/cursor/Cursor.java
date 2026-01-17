@@ -14,16 +14,16 @@
  * Java(TM) OLAP Interface
  */
 
-package javax.olap.query.querycoremodel;
+package org.eclipse.birt.olap.cursor;
 
-public interface NamedObject {
+public interface Cursor extends org.eclipse.birt.olap.query.querycoremodel.NamedObject {
 
-	java.lang.String getName() throws javax.olap.OLAPException;
+	java.lang.Object clone();
 
-	void setName(java.lang.String value) throws javax.olap.OLAPException;
+	@Override
+	boolean equals(java.lang.Object arg0);
 
-	java.lang.String getId() throws javax.olap.OLAPException;
-
-	void setId(java.lang.String value) throws javax.olap.OLAPException;
+	@Override
+	int hashCode();
 
 }

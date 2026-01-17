@@ -17,12 +17,11 @@ package org.eclipse.birt.data.engine.olap.cursor;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.olap.OLAPException;
-import javax.olap.cursor.CubeCursor;
-import javax.olap.cursor.EdgeCursor;
-
 import org.eclipse.birt.data.engine.olap.driver.IEdgeAxis;
 import org.eclipse.birt.data.engine.olap.query.view.BirtEdgeView;
+import org.eclipse.birt.olap.OLAPException;
+import org.eclipse.birt.olap.cursor.CubeCursor;
+import org.eclipse.birt.olap.cursor.EdgeCursor;
 
 /**
  * An EdgeCursor is a cursor used to navigate along an EdgeView. User could

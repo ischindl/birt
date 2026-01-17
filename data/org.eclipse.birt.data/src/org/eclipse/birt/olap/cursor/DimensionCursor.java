@@ -14,22 +14,22 @@
  * Java(TM) OLAP Interface
  */
 
-package javax.olap.cursor;
+package org.eclipse.birt.olap.cursor;
 
 public interface DimensionCursor
-		extends javax.olap.cursor.RowDataAccessor, javax.olap.cursor.RowDataNavigation, javax.olap.cursor.Cursor {
+		extends org.eclipse.birt.olap.cursor.RowDataAccessor, org.eclipse.birt.olap.cursor.RowDataNavigation, org.eclipse.birt.olap.cursor.Cursor {
 
-	long getEdgeStart() throws javax.olap.OLAPException;
+	long getEdgeStart() throws org.eclipse.birt.olap.OLAPException;
 
-	void setEdgeStart(long value) throws javax.olap.OLAPException;
+	void setEdgeStart(long value) throws org.eclipse.birt.olap.OLAPException;
 
-	long getEdgeEnd() throws javax.olap.OLAPException;
+	long getEdgeEnd() throws org.eclipse.birt.olap.OLAPException;
 
-	void setEdgeEnd(long value) throws javax.olap.OLAPException;
+	void setEdgeEnd(long value) throws org.eclipse.birt.olap.OLAPException;
 
-	javax.olap.cursor.EdgeCursor getEdgeCursor() throws javax.olap.OLAPException;
+	org.eclipse.birt.olap.cursor.EdgeCursor getEdgeCursor() throws org.eclipse.birt.olap.OLAPException;
 
-	void setEdgeCursor(javax.olap.cursor.EdgeCursor value) throws javax.olap.OLAPException;
+	void setEdgeCursor(org.eclipse.birt.olap.cursor.EdgeCursor value) throws org.eclipse.birt.olap.OLAPException;
 
 	/*
 	 * public javax.olap.query.querycoremodel.DimensionStepManager

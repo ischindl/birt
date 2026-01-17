@@ -14,15 +14,8 @@
  * Java(TM) OLAP Interface
  */
 
-package javax.olap.cursor;
+package org.eclipse.birt.olap.cursor;
 
-public interface Time extends javax.olap.query.querycoremodel.NamedObject {
-
-	javax.olap.cursor.Time valueOf(java.lang.String s) throws javax.olap.OLAPException;
-
-	@Override
-	java.lang.String toString();
-
-	void setTime(long time) throws javax.olap.OLAPException;
+public interface Types {
 
 }

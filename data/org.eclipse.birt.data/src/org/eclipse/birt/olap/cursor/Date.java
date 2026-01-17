@@ -14,18 +14,17 @@
  * Java(TM) OLAP Interface
  */
 
-package javax.olap.cursor;
+package org.eclipse.birt.olap.cursor;
 
-public interface Blob extends javax.olap.query.querycoremodel.NamedObject {
+public interface Date extends org.eclipse.birt.olap.query.querycoremodel.NamedObject {
 
-	long length() throws javax.olap.OLAPException;
+	void date(long date) throws org.eclipse.birt.olap.OLAPException;
 
-	byte[] getBytes(long arg0, int arg1) throws javax.olap.OLAPException;
+	void setTime(long date) throws org.eclipse.birt.olap.OLAPException;
 
-	java.io.InputStream getBinaryStream() throws javax.olap.OLAPException;
+	org.eclipse.birt.olap.cursor.Date valueOf(java.lang.String s) throws org.eclipse.birt.olap.OLAPException;
 
-	long position(byte[] arg0, long arg1) throws javax.olap.OLAPException;
-
-	long position(Blob arg0, long arg1) throws javax.olap.OLAPException;
+	@Override
+	java.lang.String toString();
 
 }

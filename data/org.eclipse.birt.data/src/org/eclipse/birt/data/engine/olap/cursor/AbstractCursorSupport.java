@@ -23,16 +23,16 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Map;
 
-import javax.olap.OLAPException;
-import javax.olap.cursor.Blob;
-import javax.olap.cursor.Clob;
-import javax.olap.cursor.Cursor;
-import javax.olap.cursor.Date;
-import javax.olap.cursor.RowDataAccessor;
-import javax.olap.cursor.RowDataMetaData;
-import javax.olap.cursor.RowDataNavigation;
-import javax.olap.cursor.Time;
-import javax.olap.cursor.Timestamp;
+import org.eclipse.birt.olap.OLAPException;
+import org.eclipse.birt.olap.cursor.Blob;
+import org.eclipse.birt.olap.cursor.Clob;
+import org.eclipse.birt.olap.cursor.Cursor;
+import org.eclipse.birt.olap.cursor.Date;
+import org.eclipse.birt.olap.cursor.RowDataAccessor;
+import org.eclipse.birt.olap.cursor.RowDataMetaData;
+import org.eclipse.birt.olap.cursor.RowDataNavigation;
+import org.eclipse.birt.olap.cursor.Time;
+import org.eclipse.birt.olap.cursor.Timestamp;
 
 /**
  * This class implements jolap RowDataAccessor, RowDataNavigation, Cursor

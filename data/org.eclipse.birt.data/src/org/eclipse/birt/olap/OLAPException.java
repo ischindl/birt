@@ -14,7 +14,7 @@
  * Java(TM) OLAP Interface
  */
 
-package javax.olap;
+package org.eclipse.birt.olap;
 
 public class OLAPException extends org.eclipse.birt.data.engine.core.DataException {
 

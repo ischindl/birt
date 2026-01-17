@@ -14,14 +14,21 @@
  * Java(TM) OLAP Interface
  */
 
-package javax.olap.cursor;
+package org.eclipse.birt.olap;
 
-public interface CubeCursor extends javax.olap.cursor.RowDataAccessor, javax.olap.cursor.Cursor {
+public class OLAPWarning extends OLAPException {
 
-	java.util.List getOrdinateEdge() throws javax.olap.OLAPException;
+	private static final long serialVersionUID = 1L;
 
-	java.util.Collection getPageEdge() throws javax.olap.OLAPException;
+	public OLAPWarning(String reason) {
+		super(reason);
+	}
 
-	void synchronizePages() throws javax.olap.OLAPException;
+	public OLAPWarning(String reason, String OLAPState) {
+		super(reason, OLAPState);
+	}
 
+	public OLAPWarning(String reason, String OLAPState, int vendorCode) {
+		super(reason, OLAPState, vendorCode);
+	}
 }

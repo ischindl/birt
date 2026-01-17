@@ -26,6 +26,9 @@
 	<packaging>jar</packaging>
 	<properties>
 		<birtpackages.basedir>${project.parent.basedir}</birtpackages.basedir>
+		<birt.runtime.unpack.dir>${project.build.directory}/birt-runtime</birt.runtime.unpack.dir>
+		<birt.osgi.unpack.dir>${project.build.directory}/birt-runtime-osgi</birt.osgi.unpack.dir>
+		<argLine></argLine>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -57,7 +60,7 @@
 									<type>zip</type>
 									<classifier>runtime</classifier>
 									<overWrite>true</overWrite>
-									<outputDirectory>${project.build.directory}/birt-runtime</outputDirectory>
+									<outputDirectory>${birt.runtime.unpack.dir}</outputDirectory>
 								</artifactItem>
 								<artifactItem>
 									<groupId>org.eclipse.birt</groupId>
@@ -66,7 +69,7 @@
 									<type>zip</type>
 									<classifier>runtime</classifier>
 									<overWrite>true</overWrite>
-									<outputDirectory>${project.build.directory}/birt-runtime-osgi</outputDirectory>
+									<outputDirectory>${birt.osgi.unpack.dir}</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 							<overWriteReleases>true</overWriteReleases>
@@ -81,7 +84,76 @@
 				<version>${maven-surefire-plugin-version}</version>
 				<configuration>
 					<skipTests>${skipTests}</skipTests>
+					<useModulePath>false</useModulePath>
+					<forkCount>1</forkCount>
+					<reuseForks>false</reuseForks>
 				</configuration>
+				<executions>
+					<!--Execution #1: Testing the Standard BIRT Runtime -->
+					<execution>
+						<id>test-birt-runtime</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<!-- Run only RuntimeTest -->
+							<useSystemClassLoader>false</useSystemClassLoader>
+							<includes>
+								<include>**/RuntimeTest.java</include>
+							</includes>
+							<!-- Adds only the standard runtime to the classpath -->
+							<argLine>
+								--add-opens java.base/java.lang=ALL-UNNAMED
+								--add-opens java.base/java.lang.reflect=ALL-UNNAMED
+								--add-opens java.base/java.io=ALL-UNNAMED
+								--add-opens java.base/java.util=ALL-UNNAMED
+								--add-opens java.base/java.net=ALL-UNNAMED
+								--add-opens java.base/sun.nio.ch=ALL-UNNAMED
+								--add-exports java.base/jdk.internal.loader=ALL-UNNAMED
+								--add-exports java.base/jdk.internal.misc=ALL-UNNAMED
+								--illegal-access=permit
+							</argLine>
+						</configuration>
+					</execution>
+
+					<!-- Execution #2: Testing BIRT OSGi Runtime -->
+					<execution>
+						<id>test-birt-runtime-osgi</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<systemPropertyVariables>
+								<useSystemClassLoader>true</useSystemClassLoader>
+								<osgi.clean>true</osgi.clean>
+								<osgi.console>none</osgi.console>
+								<osgi.noShutdown>false</osgi.noShutdown>
+								<BIRT_HOME>
+									${project.build.directory}/birt-runtime-osgi/ReportEngine/platform</BIRT_HOME>
+							</systemPropertyVariables>
+							<!-- Run  only OsgiRuntimeTest -->
+							<includes>
+								<include>**/OsgiRuntimeTest.java</include>
+							</includes>
+							<!-- Adds only the OSGi runtime to the classpath -->
+							<argLine>
+								<!-- Required for Java 21 + OSGi --> 
+								${argLine} 
+								--add-opens java.base/java.lang=ALL-UNNAMED
+								--add-opens java.base/java.lang.reflect=ALL-UNNAMED --add-opens
+								java.base/java.io=ALL-UNNAMED --add-opens
+								java.base/java.util=ALL-UNNAMED --add-opens
+								java.base/java.net=ALL-UNNAMED --add-opens
+								java.base/sun.nio.ch=ALL-UNNAMED --add-exports
+								java.base/jdk.internal.loader=ALL-UNNAMED --add-exports
+								java.base/jdk.internal.misc=ALL-UNNAMED 
+								</argLine>
+							<systemPropertyVariables>
+								<org.eclipse.equinox.plurl.disable>true</org.eclipse.equinox.plurl.disable>
+							</systemPropertyVariables>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

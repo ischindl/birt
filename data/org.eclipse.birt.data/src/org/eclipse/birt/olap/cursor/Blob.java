@@ -14,8 +14,18 @@
  * Java(TM) OLAP Interface
  */
 
-package javax.olap.cursor;
+package org.eclipse.birt.olap.cursor;
 
-public interface Types {
+public interface Blob extends org.eclipse.birt.olap.query.querycoremodel.NamedObject {
+
+	long length() throws org.eclipse.birt.olap.OLAPException;
+
+	byte[] getBytes(long arg0, int arg1) throws org.eclipse.birt.olap.OLAPException;
+
+	java.io.InputStream getBinaryStream() throws org.eclipse.birt.olap.OLAPException;
+
+	long position(byte[] arg0, long arg1) throws org.eclipse.birt.olap.OLAPException;
+
+	long position(Blob arg0, long arg1) throws org.eclipse.birt.olap.OLAPException;
 
 }

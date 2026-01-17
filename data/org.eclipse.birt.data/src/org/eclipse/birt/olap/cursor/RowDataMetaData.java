@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2005 Actuate Corporation.
+ * Copyright (c) 2021 Contributors to the Eclipse Foundation
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -7,17 +7,17 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  *
- *
  * Contributors:
- *  Actuate Corporation  - initial API and implementation
+ *   See git history
  *******************************************************************************/
-package org.eclipse.birt.data.engine.olap.driver;
-
-/**
- *
- *
+/*
+ * Java(TM) OLAP Interface
  */
-public interface IResultSetMetaData {
+
+package org.eclipse.birt.olap.cursor;
+
+public interface RowDataMetaData extends org.eclipse.birt.olap.query.querycoremodel.NamedObject {
+
 	int getColumnCount() throws org.eclipse.birt.olap.OLAPException;
 
 	boolean isCaseSensitive(int arg0) throws org.eclipse.birt.olap.OLAPException;
@@ -44,5 +44,4 @@ public interface IResultSetMetaData {
 
 	java.lang.String getColumnClassName(int arg0) throws org.eclipse.birt.olap.OLAPException;
 
-	int getLevelCount();
 }

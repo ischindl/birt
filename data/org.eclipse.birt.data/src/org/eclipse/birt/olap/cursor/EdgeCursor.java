@@ -14,19 +14,19 @@
  * Java(TM) OLAP Interface
  */
 
-package javax.olap.cursor;
+package org.eclipse.birt.olap.cursor;
 
-public interface EdgeCursor extends javax.olap.cursor.RowDataNavigation, javax.olap.cursor.Cursor {
+public interface EdgeCursor extends org.eclipse.birt.olap.cursor.RowDataNavigation, org.eclipse.birt.olap.cursor.Cursor {
 
-	java.util.List getDimensionCursor() throws javax.olap.OLAPException;
+	java.util.List getDimensionCursor() throws org.eclipse.birt.olap.OLAPException;
 
-	javax.olap.cursor.CubeCursor getPageOwner() throws javax.olap.OLAPException;
+	org.eclipse.birt.olap.cursor.CubeCursor getPageOwner() throws org.eclipse.birt.olap.OLAPException;
 
-	void setPageOwner(javax.olap.cursor.CubeCursor value) throws javax.olap.OLAPException;
+	void setPageOwner(org.eclipse.birt.olap.cursor.CubeCursor value) throws org.eclipse.birt.olap.OLAPException;
 
-	javax.olap.cursor.CubeCursor getOrdinateOwner() throws javax.olap.OLAPException;
+	org.eclipse.birt.olap.cursor.CubeCursor getOrdinateOwner() throws org.eclipse.birt.olap.OLAPException;
 
-	void setOrdinateOwner(javax.olap.cursor.CubeCursor value) throws javax.olap.OLAPException;
+	void setOrdinateOwner(org.eclipse.birt.olap.cursor.CubeCursor value) throws org.eclipse.birt.olap.OLAPException;
 
 	/*
 	 * public javax.olap.query.querycoremodel.Segment getCurrentSegment( ) throws
