@@ -32,12 +32,12 @@ public interface DimensionCursor
 	void setEdgeCursor(org.eclipse.birt.olap.cursor.EdgeCursor value) throws org.eclipse.birt.olap.OLAPException;
 
 	/*
-	 * public javax.olap.query.querycoremodel.DimensionStepManager
-	 * getCurrentDimensionStepManager( ) throws javax.olap.OLAPException;
+	 * public org.eclipse.olap.query.querycoremodel.DimensionStepManager
+	 * getCurrentDimensionStepManager( ) throws org.eclipse.olap.OLAPException;
 	 *
 	 * public void setCurrentDimensionStepManager(
-	 * javax.olap.query.querycoremodel.DimensionStepManager value ) throws
-	 * javax.olap.OLAPException;
+	 * org.eclipse.olap.query.querycoremodel.DimensionStepManager value ) throws
+	 * org.eclipse.olap.OLAPException;
 	 */
 
 }

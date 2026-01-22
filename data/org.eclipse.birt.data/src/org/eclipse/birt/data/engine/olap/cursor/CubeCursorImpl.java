@@ -90,7 +90,7 @@ public class CubeCursorImpl extends AbstractCursorSupport implements CubeCursor 
 	}
 
 	/*
-	 * @see javax.olap.cursor.CubeCursor#getOrdinateEdge()
+	 * @see org.eclipse.olap.cursor.CubeCursor#getOrdinateEdge()
 	 */
 	@Override
 	public List getOrdinateEdge() throws OLAPException {
@@ -98,7 +98,7 @@ public class CubeCursorImpl extends AbstractCursorSupport implements CubeCursor 
 	}
 
 	/*
-	 * @see javax.olap.cursor.CubeCursor#getPageEdge()
+	 * @see org.eclipse.olap.cursor.CubeCursor#getPageEdge()
 	 */
 	@Override
 	public Collection getPageEdge() throws OLAPException {
@@ -106,7 +106,7 @@ public class CubeCursorImpl extends AbstractCursorSupport implements CubeCursor 
 	}
 
 	/*
-	 * @see javax.olap.cursor.CubeCursor#synchronizePages()
+	 * @see org.eclipse.olap.cursor.CubeCursor#synchronizePages()
 	 */
 	@Override
 	public void synchronizePages() throws OLAPException {

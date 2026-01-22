@@ -29,11 +29,11 @@ public interface EdgeCursor extends org.eclipse.birt.olap.cursor.RowDataNavigati
 	void setOrdinateOwner(org.eclipse.birt.olap.cursor.CubeCursor value) throws org.eclipse.birt.olap.OLAPException;
 
 	/*
-	 * public javax.olap.query.querycoremodel.Segment getCurrentSegment( ) throws
-	 * javax.olap.OLAPException;
+	 * public org.eclipse.olap.query.querycoremodel.Segment getCurrentSegment( ) throws
+	 * org.eclipse.olap.OLAPException;
 	 *
-	 * public void setCurrentSegment( javax.olap.query.querycoremodel.Segment value
-	 * ) throws javax.olap.OLAPException;
+	 * public void setCurrentSegment( org.eclipse.olap.query.querycoremodel.Segment value
+	 * ) throws org.eclipse.olap.OLAPException;
 	 */
 
 }

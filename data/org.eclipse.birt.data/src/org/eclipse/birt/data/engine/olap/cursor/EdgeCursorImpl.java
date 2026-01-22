@@ -56,7 +56,7 @@ class EdgeCursorImpl extends AbstractCursorSupport implements EdgeCursor {
 	}
 
 	/*
-	 * @see javax.olap.cursor.EdgeCursor#getDimensionCursor()
+	 * @see org.eclipse.olap.cursor.EdgeCursor#getDimensionCursor()
 	 */
 	@Override
 	public List getDimensionCursor() throws OLAPException {
@@ -64,7 +64,7 @@ class EdgeCursorImpl extends AbstractCursorSupport implements EdgeCursor {
 	}
 
 	/*
-	 * @see javax.olap.cursor.EdgeCursor#getOrdinateOwner()
+	 * @see org.eclipse.olap.cursor.EdgeCursor#getOrdinateOwner()
 	 */
 	@Override
 	public CubeCursor getOrdinateOwner() throws OLAPException {
@@ -72,7 +72,7 @@ class EdgeCursorImpl extends AbstractCursorSupport implements EdgeCursor {
 	}
 
 	/*
-	 * @see javax.olap.cursor.EdgeCursor#getPageOwner()
+	 * @see org.eclipse.olap.cursor.EdgeCursor#getPageOwner()
 	 */
 	@Override
 	public CubeCursor getPageOwner() throws OLAPException {
@@ -81,7 +81,7 @@ class EdgeCursorImpl extends AbstractCursorSupport implements EdgeCursor {
 
 	/*
 	 * @see
-	 * javax.olap.cursor.EdgeCursor#setOrdinateOwner(javax.olap.cursor.CubeCursor)
+	 * org.eclipse.olap.cursor.EdgeCursor#setOrdinateOwner(org.eclipse.olap.cursor.CubeCursor)
 	 */
 	@Override
 	public void setOrdinateOwner(CubeCursor value) throws OLAPException {
@@ -89,7 +89,7 @@ class EdgeCursorImpl extends AbstractCursorSupport implements EdgeCursor {
 	}
 
 	/*
-	 * @see javax.olap.cursor.EdgeCursor#setPageOwner(javax.olap.cursor.CubeCursor)
+	 * @see org.eclipse.olap.cursor.EdgeCursor#setPageOwner(org.eclipse.olap.cursor.CubeCursor)
 	 */
 	@Override
 	public void setPageOwner(CubeCursor value) throws OLAPException {

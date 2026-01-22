@@ -16,10 +16,11 @@ package org.eclipse.birt.sdk;
 @SuppressWarnings("javadoc")
 public class RuntimeTest extends BaseTestTemplate {
 
-	protected static final String BIRT_RUNTIME_PATH = "./target/birt-runtime";
-
 	@Override
-	public String getRuntimePath() {
-		return BIRT_RUNTIME_PATH;
+	protected Class<?> getClass(String bundle, String className) throws Exception {
+		System.clearProperty("BIRT_HOME");
+		ClassLoader loader = createClassLoader("./target/birt-runtime/ReportEngine/lib"); //$NON-NLS-1$
+		Class<?> mainClass = loader.loadClass(className); // $NON-NLS-1$
+		return mainClass;
 	}
 }
