@@ -29,6 +29,7 @@
 	<modules>
 		<module>org.eclipse.birt.integration.wtp.ui</module>
 		<module>org.eclipse.birt.report.viewer</module>
+		<module>org.eclipse.birt.report.viewer.servlet</module>
 		<module>org.eclipse.birt.report.viewer.jasper9.fragment</module>
 		<module>org.eclipse.birt.report.viewer.tests</module>
 	</modules>
