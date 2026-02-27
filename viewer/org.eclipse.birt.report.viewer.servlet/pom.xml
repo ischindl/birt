@@ -95,7 +95,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.6.0</version>
+				<version>3.6.1</version>
 				<executions>
 					<execution>
 						<id>add-source</id>
@@ -107,6 +107,18 @@
 							<sources>
 								<source>../org.eclipse.birt.report.viewer/birt/WEB-INF/classes</source>
 							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>add-resource</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>add-resource</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource><directory>../../nl/org.eclipse.birt.report.viewer.nl/src</directory></resource>
+							</resources>
 						</configuration>
 					</execution>
 				</executions>
